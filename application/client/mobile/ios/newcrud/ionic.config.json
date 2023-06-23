@@ -1,0 +1,7 @@
+{
+  "name": "newcrud",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

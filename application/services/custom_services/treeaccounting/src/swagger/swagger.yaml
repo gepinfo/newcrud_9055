@@ -1,0 +1,198 @@
+---
+openapi: 3.0.0
+info:
+   version: 1.3.0
+   title: newcrud open api specification
+   description: treeaccounting API
+   termsOfService: http://api_url/terms/
+   contact:
+      name: ContactName
+      email: hello@wolox.co
+      url: https://www.wolox.com.ar/
+   license:
+      name: Apache 2.0
+      url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+   - url: http://localhost:8011
+     description: treeaccounting
+tags:
+- name: treeaccount
+paths:
+   "/treeaccount/{id}":
+      delete:
+         tags:
+         -  treeaccount
+         description: GpDelete
+         parameters:
+         -  in: "path"
+            description: GpDelete
+            name: id
+            required: true
+            schema:
+               type: "string"
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+      get:
+         tags:
+         -  treeaccount
+         description: GpGetEntityById
+         parameters:
+         -  in: "path"
+            description: GpGetEntityById
+            name: id
+            required: true
+            schema:
+               type: "string"
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+   "/treeaccount/get/search":
+      get:
+         tags:
+         -  treeaccount
+         description: GpSearch
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+   "/treeaccount/get/update":
+      put:
+         tags:
+         -  treeaccount
+         description: GpSearchForUpdate
+         requestBody:
+            content:
+               application/json:
+                  schema:
+                     $ref: "#/components/schemas/treeaccount"
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+   "/treeaccount":
+      put:
+         tags:
+         -  treeaccount
+         description: GpUpdate
+         requestBody:
+            content:
+               application/json:
+                  schema:
+                     $ref: "#/components/schemas/treeaccount"
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+      get:
+         tags:
+         -  treeaccount
+         description: GpGetAllValues
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+      post:
+         tags:
+         -  treeaccount
+         description: GpCreate
+         requestBody:
+            content:
+               application/json:
+                  schema:
+                     $ref: "#/components/schemas/treeaccount"
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+   "/treeaccount/userid/created_by":
+      get:
+         tags:
+         -  treeaccount
+         description: GpGetNounCreatedBy
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+   "/treeaccount/get/tree":
+      get:
+         tags:
+         -  treeaccount
+         description: GpGetAllTree
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+components:
+   schemas:
+      treeaccount:
+         type: object
+         properties:
+            name:
+               type: "string"
+               description: Description
+            isExpanded:
+               type: "boolean"
+               description: Description
+            isSelected:
+               type: "boolean"
+               description: Description
+            isLeaf:
+               type: "boolean"
+               description: Description
+            parent_id:
+               type: "string"
+               description: Description
+            id:
+               type: "string"
+               description: Description
+            category:
+               type: "string"
+               description: Description
